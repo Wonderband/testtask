@@ -1,5 +1,4 @@
 import { Component } from 'react';
-
 import hansel from '../../img/hansel.png';
 import logo from '../../img/logo.png';
 import { Stats } from 'components/Stats/Stats';
