@@ -43,13 +43,13 @@ export default class App extends Component {
     return (
       <div className="container">
         <ul className="usersList">
-          {data.users.map(user => {
+          {data.users.map((user, idx) => {
             return (
               <li key={user.id}>
                 <Card
                   id={user.id}
-                  isActive={this.state.data[user.id - 1].isActive}
-                  followers={this.state.data[user.id - 1].followers}
+                  isActive={this.state.data[idx].isActive}
+                  followers={this.state.data[idx].followers}
                   onClick={this.toggleStatus}
                   tweets={user.tweets}
                 />
