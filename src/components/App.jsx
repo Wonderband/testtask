@@ -1,58 +1,51 @@
-import { Component } from 'react';
-// import { Helmet } from 'react-helmet';
+import { Component } from 'react'
 import boy from '../img/boy.png';
 import logo from '../img/logo.png';
 import '../index.css';
 
-// import './App.css';
-
 export default class App extends Component {
 
   state = {
-    isActive: true, 
+    isActive: false, 
     followers: 100500,
   }
 
   componentDidMount() { 
-    const status = localStorage.getItem('status');
-    // console.log(status);
-  
-    this.setState({ isActive: status? true: false  });
-    console.log(this.state);
+    const stats = JSON.parse(localStorage.getItem('stats'));   
+    if (stats)
+      this.setState({ isActive: stats.state, followers: stats.followers });   
   }
 
-  componentDidUpdate(_, prevState) { 
-    if (this.state.isActive === prevState.isActive) return;
-    if (this.state.isActive)
-      this.setState(prevState => ({ followers: prevState.followers + 1 }));
-    else
-      this.setState(prevState => ({ followers: prevState.followers - 1 }));
-    localStorage.setItem('status', this.state.isActive, 'followers', this.state.followers)
-  }
+  componentDidUpdate() { 
+    localStorage.setItem('stats', JSON.stringify({
+      'state': this.state.isActive,
+      'followers': this.state.followers,
+      }));       
+  }   
 
-  toggleStatus = (e) => { 
-    console.log(this.state);
-    this.setState(prevState =>  ({isActive: !prevState.isActive }));
+  toggleStatus = (e) => {    
+    this.setState(prevState => ({
+      isActive: !prevState.isActive,
+      followers: !prevState.isActive ? prevState.followers + 1 : prevState.followers - 1,
+    }));  
   }
 
   render() {
-    return (
-      <>
-        
-        <div className="container">
-          <div className="card">
-            <img className="logo" src={logo} alt="nologo" />
-            <div className="divider"></div>
-            <img className="circle" src={boy} alt="boy" />
-            <div className="stats">
-              <p className="headline">777 tweets</p>
-              <p>{`${100},${500} followers`}</p>
-            </div>
-            <button type="button" className={`button ${this.state.isActive ? 'active' : ''}`}
-            onClick={ this.toggleStatus}>follow</button>
+    return (       
+      <div className="container">
+        <div className="card">
+          <img className="logo" src={logo} alt="nologo" />
+          <div className="divider"></div>
+          <img className="circle" src={boy} alt="boy" />
+          <div className="stats">
+            <p className="headline">777 tweets</p>
+            <p>{Math.floor(this.state.followers / 1000)},{this.state.followers % 1000} followers</p>
           </div>
-        </div>          
-      </>
+          <button type="button" className={`button ${this.state.isActive ? 'active' : ''}`}
+            onClick={this.toggleStatus}>{this.state.isActive ? 'following' : 'follow'}
+          </button>
+        </div>
+      </div>     
     );
   }
 }
