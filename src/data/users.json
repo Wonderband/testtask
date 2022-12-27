@@ -3,7 +3,7 @@
     "id": 1, 
     "name": "Miles Davis",
     "tweets": 45700,
-    "followers": 3000,
+    "followers": 300,
     "avatar": "../img/boy.png"
     },
      {
@@ -17,7 +17,28 @@
     "id": 3, 
     "name": "John Patitucci",
     "tweets": 45330,
-    "followers": 300,
+    "followers": 1300,
+    "avatar": "../img/boy.png"
+    },
+      {
+    "id": 4, 
+    "name": "John Scofield",
+    "tweets": 45330,
+    "followers": 2300,
+    "avatar": "../img/boy.png"
+    },
+      {
+    "id": 5, 
+    "name": "Dave Weckle",
+    "tweets": 45330,
+    "followers": 3300,
+    "avatar": "../img/boy.png"
+    },
+      {
+    "id": 6, 
+    "name": "Marcus Miller",
+    "tweets": 45330,
+    "followers": 3500,
     "avatar": "../img/boy.png"
     }
 ]}

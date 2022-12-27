@@ -1,55 +1,63 @@
-import { Component } from 'react'
-import hansel from '../img/hansel.png';
-import logo from '../img/logo.png';
+import { Component } from 'react';
+import { Card } from './Card/Card';
 import '../index.css';
+import data from '../data/users.json';
 
 export default class App extends Component {
-
   state = {
-    isActive: false, 
-    followers: 100500,
+    data: data.users.map(user => {
+      return { id: user.id, isActive: false, followers: user.followers };
+    }),
+  };
+
+  componentDidMount() {
+    const stats = JSON.parse(localStorage.getItem('stats'));
+    if (stats) this.setState({ data: stats });
   }
 
-  componentDidMount() { 
-    const stats = JSON.parse(localStorage.getItem('stats'));   
-    if (stats)
-      this.setState({ isActive: stats.state, followers: stats.followers });   
+  componentDidUpdate() {
+    localStorage.setItem('stats', JSON.stringify(this.state.data));
   }
 
-  componentDidUpdate() { 
-    localStorage.setItem('stats', JSON.stringify({
-      'state': this.state.isActive,
-      'followers': this.state.followers,
-      }));       
-  }   
-
-  toggleStatus = (e) => {    
-    this.setState(prevState => ({
-      isActive: !prevState.isActive,
-      followers: !prevState.isActive ? prevState.followers + 1 : prevState.followers - 1,
-    }));  
-  }
+  toggleStatus = e => {
+    console.log(e.target.id);
+    console.log(this.state.data[e.target.id - 1]);
+    const idNumber = this.state.data[e.target.id - 1].id;
+    console.log(idNumber);
+    this.setState(prevState => {
+      return {
+        data: prevState.data.map(el =>
+          el.id === idNumber
+            ? {
+                id: el.id,
+                isActive: !el.isActive,
+                followers: el.isActive ? el.followers - 1 : el.followers + 1,
+              }
+            : el
+        ),
+      };
+    });
+  };
 
   render() {
-    return (       
+    return (
       <div className="container">
-        <div className="card">
-          <img className="logo" src={logo} alt="nologo" />
-          <div className="divider"></div>
-          <div className="avatar">
-            <img className="face" src={hansel} alt="boy" />
-          </div>          
-          <div className="stats">
-            <p className="headline">777 tweets</p>
-            <p>{Math.floor(this.state.followers / 1000)},{this.state.followers % 1000} followers</p>
-          </div>
-          <button type="button" className={`button ${this.state.isActive ? 'active' : ''}`}
-            onClick={this.toggleStatus}>{this.state.isActive ? 'following' : 'follow'}
-          </button>
-        </div>
-      </div>     
+        <ul className="usersList">
+          {data.users.map(user => {
+            return (
+              <li key={user.id}>
+                <Card
+                  id={user.id}
+                  isActive={this.state.data[user.id - 1].isActive}
+                  followers={this.state.data[user.id - 1].followers}
+                  onClick={this.toggleStatus}
+                  tweets={user.tweets}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }
-
-
