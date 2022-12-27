@@ -12,6 +12,7 @@ export default class App extends Component {
 
   componentDidMount() {
     const stats = JSON.parse(localStorage.getItem('stats'));
+    // console.log(stats);
     if (stats) this.setState({ data: stats });
   }
 
@@ -20,10 +21,11 @@ export default class App extends Component {
   }
 
   toggleStatus = e => {
-    console.log(e.target.id);
-    console.log(this.state.data[e.target.id - 1]);
-    const idNumber = this.state.data[e.target.id - 1].id;
-    console.log(idNumber);
+    const idNumber = Number(e.target.id);
+    // console.log(idNumber);
+    // console.log(typeof idNumber);
+    // console.log(e.target.id);
+    // console.log(typeof e.target.id);
     this.setState(prevState => {
       return {
         data: prevState.data.map(el =>
