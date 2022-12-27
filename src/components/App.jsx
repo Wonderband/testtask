@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import boy from '../img/boy.png';
+import hansel from '../img/hansel.png';
 import logo from '../img/logo.png';
 import '../index.css';
 
@@ -36,7 +36,9 @@ export default class App extends Component {
         <div className="card">
           <img className="logo" src={logo} alt="nologo" />
           <div className="divider"></div>
-          <img className="circle" src={boy} alt="boy" />
+          <div className="avatar">
+            <img className="face" src={hansel} alt="boy" />
+          </div>          
           <div className="stats">
             <p className="headline">777 tweets</p>
             <p>{Math.floor(this.state.followers / 1000)},{this.state.followers % 1000} followers</p>

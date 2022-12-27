@@ -1,0 +1,23 @@
+{"users": [
+    {
+    "id": 1, 
+    "name": "Miles Davis",
+    "tweets": 45700,
+    "followers": 3000,
+    "avatar": "../img/boy.png"
+    },
+     {
+    "id": 2, 
+    "name": "John Lee Hooker",
+    "tweets": 400,
+    "followers": 3700,
+    "avatar": "../img/boy.png"
+    },
+     {
+    "id": 3, 
+    "name": "John Patitucci",
+    "tweets": 45330,
+    "followers": 300,
+    "avatar": "../img/boy.png"
+    }
+]}

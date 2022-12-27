@@ -154,9 +154,7 @@ h6 {
   font-weight: 400;
 }
 
-.container {
-  /* padding-left: 864px;
-    padding-top: 174px; */
+.container { 
   background-color: antiquewhite;
 }
 
@@ -168,12 +166,11 @@ h6 {
 
   box-shadow: -3px 8px 24px rgba(0, 0, 0, 0.23);
   border-radius: 24px;
-  background-image: url('./img/background.png'), linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
-  /* background-image: url('./img/background.png'); */
+  background-image: url('./img/background.png'), 
+  linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%); 
   background-repeat: no-repeat;
   background-position: 52px 34px, 0 0;
   background-size: 357px 194px, auto;
-
 }
 
 .logo {
@@ -186,15 +183,6 @@ h6 {
   opacity: 0.3;
 }
 
-/* .picture {
-    display: block;
-    position: absolute;
-    width: 357px;
-    height: 194px;
-    left: 52px;
-    top: 34px;
-} */
-
 .divider {
   position: absolute;
   width: 454px;
@@ -205,19 +193,27 @@ h6 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06), inset 0px -2px 4px #AE7BE3, inset 0px 4px 3px #FBF8FF;
 }
 
-.circle {
-  display: block;
+.avatar {
+  background-image: url('./img/ellipse.png');
   position: absolute;
   width: 92px;
   height: 92px;
   left: 181px;
   top: 209px;
-  border-radius: 100px;
+  background-color: #5736A3;
+  background-repeat: no-repeat;   
+  background-position: -6px 0;
+  border-radius: 50%;
+  padding: 10px;
 }
 
+/* .face {
+  display: block;   
+  border-radius: 50%;
+} */
+
 .stats {
-  width: 454px;
-  /* left: 148px; */
+  width: 454px;  
   position: absolute;
   left: 50%;
   top: 333px;
